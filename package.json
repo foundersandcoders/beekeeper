@@ -4,7 +4,10 @@
   "description": "add/search/remove membership control for clerk",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape ./test/*.test.js | tap-spec",
+    "jshint": "jshint -c ./.jshintrc --exclude-path .gitignore .",
+    "coverage": "istanbul cover tape ./test/*.test.js && istanbul check-coverage --statements 95 --functions 95 --lines 95 --branches 95",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,11 @@
   "homepage": "https://github.com/foundersandcoders/beekeeper",
   "dependencies": {
     "esta": "^3.2.1",
-    "hapi": "^8.4.0"
+    "hapi": "^8.4.0",
+    "tape": "^4.0.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.13",
+    "tap-spec": "^3.0.0"
   }
 }
