@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-var rootDir = __dirname + '../..' ;
+var rootDir = __dirname + '../..';
 
 var test = require('tape');
 var extend = require(rootDir + '/lib/extend.js');
