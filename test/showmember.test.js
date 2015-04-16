@@ -18,14 +18,14 @@ test("GET /members/{id} should return 200 if member exists", function (t) {
   });
 });
 
-// test("Teardown", function (t) {
+test("Teardown", function (t) {
 
-//   drop(function (res) {
+  drop(function (res) {
 
-//     t.equal(res.acknowledged, true, "All Records DELETED!");
-//     t.end();
-//   }).end();
-// });
+    t.equal(res.acknowledged, true, "All Records DELETED!");
+    t.end();
+  }).end();
+});
 
 test("GET /members/{id} should return 404 if member does not exist", function (t) {
 

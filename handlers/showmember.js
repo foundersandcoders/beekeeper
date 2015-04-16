@@ -10,7 +10,7 @@ function showMember (req, res) {
       return res({ stausCode: 404, status: "missing", message: "invalid member"}).code(404);
     }else{
       return res(response);
-    };
+    }
   });
 }
 
