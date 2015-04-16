@@ -20,20 +20,25 @@
     "search",
     "remove"
   ],
-  "author": "William Fisher, Naomi Gaynor",
+  "author": "William Fisher, Naomi Gaynor, Besart Shyti",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/foundersandcoders/beekeeper/issues"
   },
+  "pre-commit": [
+    "jshint",
+    "coverage"
+  ],
   "homepage": "https://github.com/foundersandcoders/beekeeper",
   "dependencies": {
     "esta": "^3.2.1",
-    "hapi": "^8.4.0",
-    "tape": "^4.0.0"
+    "hapi": "^8.4.0"
   },
   "devDependencies": {
     "istanbul": "^0.3.13",
     "jshint": "^2.7.0",
-    "tap-spec": "^3.0.0"
+    "pre-commit": "^1.0.6",
+    "tap-spec": "^3.0.0",
+    "tape": "^4.0.0"
   }
 }
