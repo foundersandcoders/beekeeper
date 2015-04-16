@@ -32,7 +32,8 @@
   "homepage": "https://github.com/foundersandcoders/beekeeper",
   "dependencies": {
     "esta": "^3.2.1",
-    "hapi": "^8.4.0"
+    "hapi": "^8.4.0",
+    "rubberbands": "^1.0.0"
   },
   "devDependencies": {
     "istanbul": "^0.3.13",
