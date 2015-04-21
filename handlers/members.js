@@ -1,5 +1,7 @@
 "use strict";
 
+var is = require("torf");
+
 /**
  *	It is possible to inject any database 
  *	in the controller. Just pass it as an
@@ -17,8 +19,10 @@ module.exports = function (database) {
 	return {
 		search: function search (req, res) {
 
-			var queryname = Object.keys(req.query);
-			db.search(queryname, req.query[queryname], function (response) {
+			var key   = is.ok(req.query) ? Object.keys(req.query)[0] : "*";
+			var value = is.ok(req.query) ? req.query[key]            : "*";
+
+			db.search(key, value, function (response) {
 
 				if (response.hits.total > 0) {
 					return res(response.hits.hits);
