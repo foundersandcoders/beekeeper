@@ -5,6 +5,8 @@ var members = require("rubberbands")("clerk", "members");
 function search (req, res) {
 
   var queryname = Object.keys(req.query);
+  console.log(queryname, req.query[queryname]);
+
   members.search(queryname, req.query[queryname], function (response) {
 
     if (response.hits.total > 0) {
