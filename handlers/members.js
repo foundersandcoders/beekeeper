@@ -33,34 +33,34 @@ module.exports = function (database) {
 		},
 		create: function create (req, res) {
 
-		  db.create(req.payload, function (response) {
+			db.create(req.payload, function (response) {
 
-		    return res(response);
-		  });
+				return res(response);
+			});
 		},
 		read: function read (req, res) {
 
-		  db.read(req.params.id, function (response) {
+			db.read(req.params.id, function (response) {
 
-		    if (!response.found){
-		      return res({ statusCode: 404, status: "missing", message: "invalid member"}).code(404);
-		    }else{
-		      return res(response);
-		    }
-		  });
+				if (!response.found) {
+					return res({ statusCode: 404, status: "missing", message: "invalid member"}).code(404);
+				}else{
+					return res(response);
+				}
+			});
 		},
 		update: function update (req, res) {
 
-		  db.read(req.params.id, function (response) {
+			db.read(req.params.id, function (response) {
 
-		    if (!response.found) {
-		      return res({ statusCode: 404, status: "missing", message: "invalid member"}).code(404);
-		    }
-		    db.update(req.params.id, req.payload, function (response) {
+				if (!response.found) {
+					return res({ statusCode: 404, status: "missing", message: "invalid member"}).code(404);
+				}
+				db.update(req.params.id, req.payload, function (response) {
 
-		      return res(response);
-		    });
-		  });
+					return res(response);
+				});
+			});
 		}
 	};
 };
