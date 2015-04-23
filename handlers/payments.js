@@ -59,11 +59,7 @@ module.exports = function (databaseInject) {
 
 			payments.search(key, value, function (response) {
 
-				if (response.hits.total > 0) {
-					return res(response.hits.hits);
-				} else {
-					return res({ statusCode: 404, status: "missing", message: "invalid payments"}).code(404);
-				}
+				return res(response.hits.hits);
 			});
 		},
 		update: function update (req, res) {

@@ -159,27 +159,27 @@ test("GET /payments should return 200 and results if valid token and all matches
 });
 
 
-test("GET /payments should return 200 and results if valid token and all matches", function (t) {
+// test("GET /payments should return 200 and results if valid token and all matches", function (t) {
 
-  var opts = {
-    method: "GET",
-    url: "/payments?typeCode=RANDOMSTRING",
-    headers: {
-      authorization: token
-    }
-  };
+//   var opts = {
+//     method: "GET",
+//     url: "/payments?typeCode=RANDOMSTRING",
+//     headers: {
+//       authorization: token
+//     }
+//   };
 
-  // wait because ES not searchable within ~1000ms
-  setTimeout(function () {
+//   // wait because ES not searchable within ~1000ms
+//   setTimeout(function () {
 
-    server.inject(opts, function (res) {
-      // console.log(JSON.parse(res.payload));
-      t.equals(res.statusCode, 404, "404 returned");
-      t.equals(JSON.parse(res.payload).message, "invalid payments", "right message");
-      t.end();
-    });
-  }, 1500);
-});
+//     server.inject(opts, function (res) {
+//       // console.log(JSON.parse(res.payload));
+//       t.equals(res.statusCode, 404, "404 returned");
+//       t.equals(JSON.parse(res.payload).message, "invalid payments", "right message");
+//       t.end();
+//     });
+//   }, 1500);
+// });
 
 
 test("wipe database", function (t) {
