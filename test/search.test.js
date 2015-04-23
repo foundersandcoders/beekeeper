@@ -155,6 +155,31 @@ test("GET /members?<query>=<value> should return 200 and results if valid token 
 });
 
 
+test("GET /members should return 200 and ALL the results in the members table", function (t) {
+
+  var opts = {
+    method: "GET",
+    url: "/members",
+    headers: {
+      authorization: token
+    }
+  };
+
+  //wait because ES not searchable within ~1000ms
+  setTimeout(function () {
+
+    server.inject(opts, function (res) {
+
+      console.log(JSON.parse(res.payload));
+
+      t.equals(res.statusCode, 200, "200 returned");
+      t.ok(JSON.parse(res.payload).length > 1, "the array is longer than 1");
+      t.end();
+    });
+  }, 1000);
+});
+
+
 test("wipe user database", function (t) {
 
   drop(9200, function (res) {
