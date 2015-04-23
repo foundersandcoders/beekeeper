@@ -84,7 +84,7 @@ test("GET /members/{id} should return 404 if correct token but no matches", func
 
   var request = {
     method: "GET",
-    url: "/members/wil",
+    url: "/members/i_dont_exist_yet",
     headers: {
       authorization: token
     }
