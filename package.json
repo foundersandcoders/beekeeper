@@ -34,6 +34,7 @@
   "dependencies": {
     "esta": "^3.2.1",
     "hapi": "^8.4.0",
+    "joi": "^6.2.0",
     "request": "^2.55.0",
     "rubberbands": "^1.0.1",
     "torf": "^1.0.3"
