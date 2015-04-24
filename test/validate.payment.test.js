@@ -11,19 +11,14 @@ var authUrl  = process.env.AUTH_URL || "http://0.0.0.0:8000";
 var token;
 
 
-test("wipe payments database", function (t) {
+test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 
@@ -102,7 +97,7 @@ test("should respond with 400 when payment object is INVALID", function (t) {
 
 
   server.inject(request, function (res){
-    
+
     t.equals(res.statusCode, 400, "400 returned");
     t.equals(JSON.parse(res.payload).validation.keys[0], "typeCode", "400 cause typeCode");
     t.end();
@@ -157,7 +152,7 @@ test("should respond with 400 when payment total is zero", function (t) {
 
 
   server.inject(request, function (res){
-    
+
     t.equals(res.statusCode, 400, "400 returned");
     t.equals(JSON.parse(res.payload).message, "total payment can not be zero", "respond with right message");
     t.end();
@@ -220,13 +215,12 @@ test("should respond with 200 when payment object is VALID", function (t) {
 });
 
 
-test("wipe database", function (t) {
+test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
-
     t.end();
 
-  }).end();
+  });
 });

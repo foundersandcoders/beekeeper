@@ -8,6 +8,16 @@ var drop = require("./z_drop.js");
 
 var token;
 
+test("wipe user database", function (t) {
+
+  drop(function (res) {
+
+    t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
+
+  });
+});
+
 test("GET /members/{id} without token should return 401", function (t) {
 
   var request = {
@@ -76,14 +86,4 @@ test("GET /members/{id} with valid token should return 404 for member not found"
     t.equals(res.statusCode, 404, "404 returned");
     t.end();
   });
-});
-
-test("wipe user database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all records deleted");
-    t.end();
-  }).end();
-
 });

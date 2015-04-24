@@ -12,19 +12,14 @@ var token;
 var paymentId;
 
 
-test("wipe payments database", function (t) {
+test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 
@@ -180,14 +175,3 @@ test("GET /payments should return 200 and results if valid token and all matches
 //     });
 //   }, 1500);
 // });
-
-
-test("wipe database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all users deleted");
-
-    t.end();
-  }).end();
-});

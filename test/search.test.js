@@ -11,17 +11,12 @@ var token;
 
 test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 test("GET /members?name=wil should return 401 if not valid token", function (t) {
@@ -177,20 +172,4 @@ test("GET /members should return 200 and ALL the results in the members table", 
       t.end();
     });
   }, 1000);
-});
-
-
-test("wipe user database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all users deleted");
-
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
 });

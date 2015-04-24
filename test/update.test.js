@@ -11,17 +11,12 @@ var token;
 
 test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
-    t.ok(res.acknowledged, "all users deleted");
+    t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 test("create new user", function (t) {
@@ -147,19 +142,4 @@ test("member should be updated", function(t) {
     t.equals(res._source.message, "I am the best", "member successfully updated");
     t.end();
   });
-});
-
-test("wipe user database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, "all users deleted");
-
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
 });

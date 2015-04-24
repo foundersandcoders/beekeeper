@@ -3,7 +3,7 @@
 var is = require("torf");
 
 /**
- *	It is possible to inject any database 
+ *	It is possible to inject any database
  *	in the controller. Just pass it as an
  *	argument when invoking the handler function.
  *	If no database is injected the handler
@@ -34,7 +34,7 @@ module.exports = function (database) {
 		create: function create (req, res) {
 
 			db.create(req.payload, function (response) {
-
+        console.log(req.payload);
 				return res(response);
 			});
 		},

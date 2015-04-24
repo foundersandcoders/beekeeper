@@ -11,17 +11,12 @@ var token;
 
 test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 test("create new user", function (t) {
@@ -129,16 +124,4 @@ test("GET /members/{id} should return 200 if correct token and no matches", func
     t.equals(res.statusCode, 200, "200 returned");
     t.end();
   });
-});
-
-
-test("wipe user database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all users deleted");
-
-    t.end();
-
-  }).end();
 });

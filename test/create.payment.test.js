@@ -7,24 +7,17 @@ var server   = require("../lib/server.js");
 var drop     = require("./z_drop.js");
 var authUrl  = process.env.AUTH_URL || "http://0.0.0.0:8000";
 
-
 var token;
 var paymentId;
 
-
 test("wipe payments database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 
@@ -41,6 +34,7 @@ test("get token", function (t) {
   };
 
   post.post(opts, function (e, h, r) {
+    console.log(e, h, r);
     t.equals(h.statusCode, 200, "200 returned");
     t.ok(r.created, "member created");
     t.ok(h.headers.authorization, "token returned");
@@ -150,16 +144,4 @@ test("GET /payments/{id} should return 404 if correct token but no matches", fun
     t.equals(JSON.parse(res.payload).message, "invalid payments", "right message");
     t.end();
   });
-});
-
-
-test("wipe database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all users deleted");
-
-    t.end();
-
-  }).end();
 });

@@ -1,29 +1,14 @@
 "use strict";
 
-var http = require("http");
+var request = require("request");
+var url = process.env.BONSAI_URL || "http://" + process.env.ES_HOST + ":" + process.env.ES_PORT;
 
-var drop = function(port, callback) {
+function drop (cb) {
 
-  var options = {
-    host:"127.0.0.1",
-    port: port, // use ENV var?
-    path: "/_all", // DELETEs EVERYTHING!!
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" }
-  };
+  return request.del(url + "/" + process.env.ES_INDEX + "/_all", function (e, h, r) {
 
-  var req = http.request(options, function(res) {
-    res.setEncoding("utf8");
-    var resStr = "";
-    res.on("data", function (chunk) {
-      resStr += chunk;
-    }).on("end", function () {
-      return callback(JSON.parse(resStr));
-    }).on("error", function(err){
-      console.log("FAIL: "+err);
-    });
+    return cb(JSON.parse(r));
   });
-  return req;
-};
+}
 
 module.exports = drop;

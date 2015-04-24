@@ -12,19 +12,15 @@ var token;
 var paymentId;
 
 
-test("wipe payments database", function (t) {
 
-  drop(9200, function (res) {
+test("wipe user database", function (t) {
+
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
+    t.end();
 
-    drop(9200, function (res) {
-
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 
@@ -103,7 +99,7 @@ test("should respond with 200 when payment object is VALID", function (t) {
   };
 
   server.inject(request, function (res){
-    
+
     t.equals(res.statusCode, 200, "200 returned");
 
     paymentId = JSON.parse(res.payload)._id;
@@ -194,15 +190,4 @@ test("PUT /payments/{id} should return 200 if valid token and valid payment", fu
     t.equals(JSON.parse(res.payload)._version, 2, "updated message");
     t.end();
   });
-});
-
-
-test("wipe database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all users deleted");
-
-    t.end();
-  }).end();
 });

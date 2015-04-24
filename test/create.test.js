@@ -11,17 +11,13 @@ var token;
 
 test("wipe user database", function (t) {
 
-  drop(9200, function (res) {
+  drop(function (res) {
 
     t.ok(res.acknowledged, true, "all users deleted");
 
-    drop(9200, function (res) {
+    t.end();
 
-      t.ok(res.acknowledged, true, "all members deleted");
-      t.end();
-    }).end();
-
-  }).end();
+  });
 });
 
 test("create new user", function (t) {
@@ -76,16 +72,4 @@ test("POST /members should create new member", function (t) {
       });
     }, 1000);
   });
-});
-
-
-test("wipe user database", function (t) {
-
-  drop(9200, function (res) {
-
-    t.ok(res.acknowledged, true, "all users deleted");
-
-    t.end();
-
-  }).end();
 });

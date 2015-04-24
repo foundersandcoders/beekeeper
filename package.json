@@ -32,7 +32,7 @@
   ],
   "homepage": "https://github.com/foundersandcoders/beekeeper",
   "dependencies": {
-    "esta": "^3.2.1",
+    "esta": "^4.0.2",
     "hapi": "^8.4.0",
     "joi": "^6.2.0",
     "request": "^2.55.0",
