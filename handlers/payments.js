@@ -19,7 +19,7 @@ module.exports = function (databaseInject) {
 	var members     = databaseObj.members  || require("rubberbands")("clerk", "members");
 
 	return {
-		create: function create (req, res) {
+		create: function (req, res) {
 
 			// check if memberId is valid
 			members.read(req.payload.memberId, function (responseMember){
@@ -41,7 +41,7 @@ module.exports = function (databaseInject) {
 				}
 			});
 		},
-		read: function read (req, res) {
+		read: function (req, res) {
 			
 			payments.read(req.params.id, function (response) {
 
@@ -52,7 +52,7 @@ module.exports = function (databaseInject) {
 				}
 			});
 		},
-		search: function search (req, res) {
+		search: function (req, res) {
 
 			var key   = is.ok(req.query) ? Object.keys(req.query)[0] : "*";
 			var value = is.ok(req.query) ? req.query[key]            : "*";
@@ -62,7 +62,7 @@ module.exports = function (databaseInject) {
 				return res(response.hits.hits);
 			});
 		},
-		update: function update (req, res) {
+		update: function (req, res) {
 			
 			payments.read(req.params.id, function (response) {
 
@@ -73,6 +73,17 @@ module.exports = function (databaseInject) {
 
 					return res(response);
 				});
+			});
+		},
+		remove: function (req, res) {
+
+			payments.delete(req.params.id, function (response){
+
+				if (!response.found) {
+					return res({ statusCode: 404, status: "missing", message: "invalid payment"}).code(404);
+				}else{
+					return res(response);
+				}
 			});
 		}
 	};
