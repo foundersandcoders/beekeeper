@@ -1,5 +1,7 @@
 "use strict";
 
+module.exports = {};
+
 var Joi = require("joi");
 
 /**
@@ -34,31 +36,31 @@ var Joi = require("joi");
  */
 
 
-var paymentTypes = {
-    CHQ:   "cheque",
-    CASH:  "cash",
-    SOA:   "standing order payment advised (by member)",
-    SOR:   "standing order received (and shown on bank statement)",
-    BACSA: "BACS payment advised (by member)",
-    BACSR: "BACS payment received by bank (and shown on bank statement)",
-    CAFA:  "charities aid foundation payment advised by member",
-    CAFR:  "charities aid foundation payment received by bank (shown on bank statement)",
-    HO:    "payment received by Harbour Office along with harbour dues"
-};
+// var paymentTypes = {
+//     CHQ:   "cheque",
+//     CASH:  "cash",
+//     SOA:   "standing order payment advised (by member)",
+//     SOR:   "standing order received (and shown on bank statement)",
+//     BACSA: "BACS payment advised (by member)",
+//     BACSR: "BACS payment received by bank (and shown on bank statement)",
+//     CAFA:  "charities aid foundation payment advised by member",
+//     CAFR:  "charities aid foundation payment received by bank (shown on bank statement)",
+//     HO:    "payment received by Harbour Office along with harbour dues"
+// };
 
-var validateTypes = Object.keys(paymentTypes);
+// var validateTypes = Object.keys(paymentTypes);
 
-module.exports = {
-    payload: {
-        memberId:      Joi.any().required(),
-        datePaid:      Joi.date().iso().required(),
-        subscription:  Joi.number(),
-        donation:      Joi.number(),
-        events:        Joi.number(),
-        total:         Joi.forbidden(),
-        error:         Joi.number().forbidden(),
-        typeCode:      Joi.string().valid(validateTypes).required(),
-        listReference: Joi.string(),
-        notes:         Joi.string().optional()
-    }
-};
+// module.exports = {
+//     payload: {
+//         memberId:      Joi.any().required(),
+//         datePaid:      Joi.any(),
+//         subscription:  Joi.number(),
+//         donation:      Joi.number(),
+//         events:        Joi.number(),
+//         total:         Joi.forbidden(),
+//         error:         Joi.number().forbidden(),
+//         typeCode:      Joi.string().valid(validateTypes).required(),
+//         listReference: Joi.string(),
+//         notes:         Joi.string().optional()
+//     }
+// };

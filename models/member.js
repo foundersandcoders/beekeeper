@@ -1,5 +1,6 @@
 "use strict";
 
+module.exports = {};
 
 // var Joi = require("joi");
 

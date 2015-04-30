@@ -34,9 +34,11 @@
   "dependencies": {
     "esta": "^4.0.2",
     "hapi": "^8.4.0",
+    "humming": "^1.0.2",
     "joi": "^6.2.0",
     "request": "^2.55.0",
     "rubberbands": "^1.0.1",
+    "russian-doll": "^1.0.5",
     "torf": "^1.0.3"
   },
   "devDependencies": {
