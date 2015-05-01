@@ -4,11 +4,11 @@
   "description": "add/search/remove membership control for clerk",
   "main": "index.js",
   "scripts": {
-    "test": "tape ./test/*.test.js | tap-spec",
+    "test": "NODE_ENV=test; tape ./test/*.test.js",
     "jshint": "jshint -c ./.jshintrc --exclude-path .gitignore .",
     "coverage": "istanbul cover tape ./test/*.test.js && istanbul check-coverage --statements 95 --functions 95 --lines 95 --branches 95",
     "debug": "node-debug index.js",
-    "start": "node index.js"
+    "start": "NODE_ENV=test; node index.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
   "dependencies": {
     "esta": "^4.0.2",
     "hapi": "^8.4.0",
-    "humming": "^1.0.2",
+    "humming": "^1.0.3",
     "joi": "^6.2.0",
     "request": "^2.55.0",
     "rubberbands": "^1.0.1",

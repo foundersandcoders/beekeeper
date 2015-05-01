@@ -1,9 +1,3 @@
-"use strict";
-
-module.exports = {};
-
-var Joi = require("joi");
-
 /**
  *  Payment schema:
  *
@@ -35,32 +29,35 @@ var Joi = require("joi");
  *  HO:    payment received by Harbour Office along with harbour dues
  */
 
+"use strict";
 
-// var paymentTypes = {
-//     CHQ:   "cheque",
-//     CASH:  "cash",
-//     SOA:   "standing order payment advised (by member)",
-//     SOR:   "standing order received (and shown on bank statement)",
-//     BACSA: "BACS payment advised (by member)",
-//     BACSR: "BACS payment received by bank (and shown on bank statement)",
-//     CAFA:  "charities aid foundation payment advised by member",
-//     CAFR:  "charities aid foundation payment received by bank (shown on bank statement)",
-//     HO:    "payment received by Harbour Office along with harbour dues"
-// };
+var Joi = require("joi");
 
-// var validateTypes = Object.keys(paymentTypes);
+var paymentTypes = {
+	CHQ:   "cheque",
+	CASH:  "cash",
+	SOA:   "standing order payment advised (by member)",
+	SOR:   "standing order received (and shown on bank statement)",
+	BACSA: "BACS payment advised (by member)",
+	BACSR: "BACS payment received by bank (and shown on bank statement)",
+	CAFA:  "charities aid foundation payment advised by member",
+	CAFR:  "charities aid foundation payment received by bank (shown on bank statement)",
+	HO:    "payment received by Harbour Office along with harbour dues"
+};
 
-// module.exports = {
-//     payload: {
-//         memberId:      Joi.any().required(),
-//         datePaid:      Joi.any(),
-//         subscription:  Joi.number(),
-//         donation:      Joi.number(),
-//         events:        Joi.number(),
-//         total:         Joi.forbidden(),
-//         error:         Joi.number().forbidden(),
-//         typeCode:      Joi.string().valid(validateTypes).required(),
-//         listReference: Joi.string(),
-//         notes:         Joi.string().optional()
-//     }
-// };
+var validateTypes = Object.keys(paymentTypes);
+
+module.exports = {
+
+	auth: "verify"
+
+	// validate: {
+	// 	payload: {
+	// 		memberId:      Joi.any().required(),
+	// 		datePaid:      Joi.any(),
+	// 		typeCode:      Joi.string().valid(validateTypes).required(),
+	// 		listReference: Joi.string(),
+	// 		notes:         Joi.string().optional()
+	// 	}
+	// }
+};

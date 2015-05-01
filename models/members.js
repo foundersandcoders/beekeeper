@@ -1,7 +1,5 @@
 "use strict";
 
-module.exports = {};
-
 // var Joi = require("joi");
 
 // module.exports = {
@@ -29,3 +27,8 @@ module.exports = {};
 // 		membershipNotes: "This guy is pretty cool"
 // 	}
 // };
+
+module.exports = {
+
+	auth: "verify"
+};
