@@ -31,7 +31,7 @@ test("NOT A TEST: Sign up: ", function (t){
 
 	var opts = {
 		method: "POST",
-		url: config.authUrl + "/register",
+		url: config.authUrl + "/signup",
 		body: user,
 		json: true
 	};

@@ -28,7 +28,4 @@
 // 	}
 // };
 
-module.exports = {
-
-	auth: "verify"
-};
+module.exports = {auth: "verify"};
