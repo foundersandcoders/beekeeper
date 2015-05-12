@@ -33,8 +33,10 @@
   "homepage": "https://github.com/foundersandcoders/beekeeper",
   "dependencies": {
     "esta": "^4.0.2",
+    "givit": "0.0.2",
     "hapi": "^8.4.0",
     "humming": "^1.0.3",
+    "hyperquest": "^1.2.0",
     "joi": "^6.2.0",
     "request": "^2.55.0",
     "rubberbands": "^1.0.1",
