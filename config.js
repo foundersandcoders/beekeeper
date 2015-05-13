@@ -13,10 +13,10 @@ var test = {
 };
 
 var staging = {
-	authUrl:  "http://0.0.0.0:8000",
+	authUrl:  "https://bouncer-clerk.herokuapp.com",
 	database: {	
-		port:  9200,
-		host:  "http://127.0.0.1",
+		port:  443,
+		host:  process.env.BONSAI_URL,
 		index: "clerk"
 	}
 };
