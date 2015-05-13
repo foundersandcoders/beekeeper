@@ -5,7 +5,8 @@ var config;
 
 var test = {
 	authUrl:  "http://0.0.0.0:8000",
-	database: {	
+  port: 8010,
+	database: {
 		port:  9200,
 		host:  "http://127.0.0.1",
 		index: "clerk"
@@ -13,17 +14,17 @@ var test = {
 };
 
 var staging = {
-	authUrl:  "http://0.0.0.0:8000",
-	database: {	
-		port:  9200,
-		host:  "http://127.0.0.1",
+	authUrl:  process.env.AUTH_URL,
+	database: {
+		port:  443,
+		host:  process.env.BONSAI_URL ||"http://127.0.0.1",
 		index: "clerk"
 	}
 };
 
 var production = {
 	authUrl:  "http://0.0.0.0:8000",
-	database: {	
+	database: {
 		port:  9200,
 		host:  "http://127.0.0.1",
 		index: "clerk"
